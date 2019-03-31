@@ -1,22 +1,94 @@
+body
+    {
+        background-color: #EFF5F8; /*Hintergrundfarbe der gesammten Website*/
+    }
+
 #wrapper
     { 
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20%;
+        padding-right: 20%;
     }
 
 h1
     {  
-        text-align: center
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 50px;
+    }
+
+#mainnav a
+    {
+        display: block;
+        width: 25%;                         /*Jeder Punkt/Kasten bekommt 25% des Platzes (Da 4 Punkte)*/
+        float: left;                        /*Liegen nebeneinander in einer Linie*/
+        text-align: center;                 /*Schrift mittig im Kasten*/
+        text-transform: uppercase;          /*Schrift in Versalien*/
+        background-color: antiquewhite;   /*Hintergrundfarbe des Kastens*/
+        color: black;                     /*Textfarbe*/
+        padding: 5px 0;                     /*Höhe des Kastens um die Schrift; die 0 gibt an das Seitlich neben dem Text kein Zusätzliches Padding sein soll*/
+        margin-bottom: 10px;                /*Abstand nach Unten zum nächsten Element*/
+    }
+
+#mainnav ul
+    {
+        list-style-type: none;      /*Entfernt die Aufzählungeszeichen*/
+        margin: 0;                  /*Kein weißer Rand neben der Navigation  */
+        padding: 0;                 /*Kein weißer Rand unter/über der Navigation*/
+    }
+
+#mainnav a:hover,       /*Veränderungen für den Navigationspunkt der (hover) Überflogen wird*/
+#mainnav a:active,      /*oder (active) Angeklickt wurde*/
+#mainnav a:focus        /*oder (focus) im Fokus steht (zum Beispiel durch Tab)*/
+    {
+        background-color: aqua;
+    }
+
+#mainnav a.thispage         /*Veränderungen für den Navigationspunkt der (thispage) aktiven Seite*/
+    {
+        background-color: blueviolet;
+    }
+
+#row1
+    {
+        margin-block-start: 10px;
+        margin-bottom: 10px;
+    }
+
+#row2
+    {
+        margin-block-start: 10px;
+        margin-block-end: 10px;
     }
 
 #side1
     {
         float: left;
-        width: 59%;
+        width: 58%;         /*Reguliert die Breite des Feldes prozentual zum vorhandenen Platz*/
+        margin-right: 4%;   /*Lässt 4 Prozent des vorhandenen Paltzes zum nächsten Block*/
     }
 
 #side2
     {
-        float: left;
-        width: 39%;
+        float: left;        /*Reiht sich neben den nächsten Block links an; ohne würden sie untereinander stehen*/
+        width: 38%;         /*Reguliert die Breite des Feldes prozentual zum vorhandenen Platz*/
     }
+
+img
+    {
+        width: 100%;        /*Reguliert die Auflösung des Bildes*/
+    }
+
+a
+    {
+        font-weight: bold;          /*Schriftdekoration Fett*/
+        text-decoration: none;      /*Entfernt die automaischen Unterstriche vom Link*/
+    }
+
+footer
+    {
+        background-color: bisque;     /*Hintergrundfarbe des Footers*/
+        clear: left;                    /*Setzt den Footer hinter/unter alles andere*/
+        padding-top: 0.2cm;
+        padding-bottom: 0.2cm;                 /*Höhe des Kastens um den Text*/
+    }
+
