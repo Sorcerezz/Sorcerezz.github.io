@@ -8,8 +8,8 @@ body
 
 #wrapper
     { 
-        margin-left: 20%;          /*Lässt rechts 20% des Browsers frei*/
-        margin-right: 20%;         /*Lässt links 20% des Browsers frei*/
+        margin-left: 18%;          /*Lässt rechts 20% des Browsers frei*/
+        margin-right: 18%;         /*Lässt links 20% des Browsers frei*/
         background-color: #ffffff;
 
     }
@@ -25,7 +25,7 @@ h1
 
 #top
     {
-        margin-top: -35px;
+        margin-top: -35px;      /*Entfernt den Abstand zwischen Wrapper und Seitenanfang*/
     }
 
 
@@ -33,11 +33,11 @@ h1
 #mainnav a
     {
         display: block;
-        width: 25%;                         /*Jeder Punkt/Kasten bekommt 25% des Platzes (Da 4 Punkte)*/
+        width: 20%;                         /*Jeder Punkt/Kasten bekommt 20% des Platzes (Da 4 Punkte)*/
         float: left;                        /*Liegen nebeneinander in einer Linie*/
         text-align: center;                 /*Schrift mittig im Kasten*/
         text-transform: uppercase;          /*Schrift in Versalien*/
-        background-color: antiquewhite;   /*Hintergrundfarbe des Kastens*/
+        background-color: #cac2be;   /*Hintergrundfarbe des Kastens*/
         color: black;                     /*Textfarbe*/
         padding: 5px 0;                     /*Höhe des Kastens um die Schrift; die 0 gibt an das Seitlich neben dem Text kein Zusätzliches Padding sein soll*/
         margin-bottom: 10px;                /*Abstand nach Unten zum nächsten Element*/
@@ -61,25 +61,26 @@ h1
     {
         background-color: #4C6895;
     }
-/*
-.row1
+
+.row
     {
-        padding-bottom: 100px;
+        margin-left: 5px;       /*Lässt links 5 Pixel frei zum Rand des Wrappers*/
+        margin-right: 5px;      /*Lässt rechts 5 Pixel frei zum Rand des Wrappers*/
     }
-                                            funkt nicht
- */
+
 
 .side1
     {
         float: left;
-        width: 58%;         /*Reguliert die Breite des Feldes prozentual zum vorhandenen Platz*/
-        margin-right: 4%;   /*Lässt 4 Prozent des vorhandenen Paltzes zum nächsten Block*/
+        width: 60%;         /*Reguliert die Breite des Feldes prozentual zum vorhandenen Platz*/
+        margin-right: 2%;   /*Lässt 2 Prozent des vorhandenen Paltzes zum nächsten Block*/
     }
 
 .side2
     {
         float: left;        /*Reiht sich neben den nächsten Block links an; ohne würden sie untereinander stehen*/
-        width: 38%;         /*Reguliert die Breite des Feldes prozentual zum vorhandenen Platz*/
+        width: 36%;         /*Reguliert die Breite des Feldes prozentual zum vorhandenen Platz*/
+        margin-right: 2%;   /*Lässt 2 Prozent des vorhandenen Paltzes zum nächsten Block*/
     }
 
 img
@@ -99,6 +100,17 @@ footer
         clear: left;                    /*Setzt den Footer hinter/unter alles andere*/
         padding-top: 2px;
         padding-bottom: 2px;
-        padding-left: 2%;                 /*Höhe des Kastens um den Text <-- SOLLTE*/ 
+        padding-left: 2%;                 /*Höhe des Kastens um den Text*/ 
     }
 
+#bottom
+    {
+        margin-bottom: -10px;           /*Entfernt den Abstand zwischen footer und Seitenende*/
+    }
+
+/*.shadow
+    { 
+        background-color: #FFFFFF;
+        -webkit-box-shadow: 1px 1px 15px #999999;
+        box-shadow: 1px 1px 15px #999999;
+    }*/
