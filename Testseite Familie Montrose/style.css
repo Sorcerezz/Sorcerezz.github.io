@@ -37,7 +37,7 @@ h1
         float: left;                        /*Liegen nebeneinander in einer Linie*/
         text-align: center;                 /*Schrift mittig im Kasten*/
         text-transform: uppercase;          /*Schrift in Versalien*/
-        background-color: #cac2be;   /*Hintergrundfarbe des Kastens*/
+        background-color: #cac2be;        /*Hintergrundfarbe des Kastens*/
         color: black;                     /*Textfarbe*/
         padding: 5px 0;                     /*Höhe des Kastens um die Schrift; die 0 gibt an das Seitlich neben dem Text kein Zusätzliches Padding sein soll*/
         margin-bottom: 10px;                /*Abstand nach Unten zum nächsten Element*/
@@ -96,11 +96,12 @@ a
 
 footer
     {
-        background-color: #4C6895;     /*Hintergrundfarbe des Footers*/
+        background-color: #918C8B;     /*Hintergrundfarbe des Footers*/
         clear: left;                    /*Setzt den Footer hinter/unter alles andere*/
         padding-top: 2px;
         padding-bottom: 2px;
         padding-left: 2%;                 /*Höhe des Kastens um den Text*/ 
+        font-family: 'Open Sans', sans-serif;       /*Definiert die Schriftart auf die oben verlinkte*/
     }
 
 #bottom
