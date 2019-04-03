@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
 body
     {
-        background-color: #EFF5F8; /*Hintergrundfarbe der gesammten Website*/
+        font-family: 'Roboto', sans-serif;        /*Definiert die Schriftart auf die oben verlinkte*/
+        background-color: #EFF5F8;              /*Hintergrundfarbe der gesammten Website*/
     }
 
 #wrapper
@@ -11,9 +14,10 @@ body
 
 h1
     {  
-        text-align: center;             /*Rückt Überschrift in die Mitte der Website*/
-        text-transform: uppercase;      /*Schriftdekoration Fett*/
-        font-size: 50px;                /*Schrtiftgröße 50 Pixel*/
+        font-family: 'Open Sans', sans-serif;       /*Definiert die Schriftart auf die oben verlinkte*/
+        text-align: center;                 	    /*Rückt Überschrift in die Mitte der Website*/
+        text-transform: uppercase;                  /*Schriftdekoration Fett*/
+        font-size: 50px;                            /*Schrtiftgröße 50 Pixel*/
     }
 
 #mainnav a
@@ -53,11 +57,7 @@ h1
         padding-bottom: 100px;
     }
                                             funkt nicht
-#row2
-    {
-        margin-block-start: 10px;
-        margin-block-end: 10px;
-    } */
+ */
 
 #side1
     {
