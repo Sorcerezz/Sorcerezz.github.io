@@ -52,21 +52,21 @@ h1
         background-color: blueviolet;
     }
 /*
-#row1
+.row1
     {
         padding-bottom: 100px;
     }
                                             funkt nicht
  */
 
-#side1
+.side1
     {
         float: left;
         width: 58%;         /*Reguliert die Breite des Feldes prozentual zum vorhandenen Platz*/
         margin-right: 4%;   /*Lässt 4 Prozent des vorhandenen Paltzes zum nächsten Block*/
     }
 
-#side2
+.side2
     {
         float: left;        /*Reiht sich neben den nächsten Block links an; ohne würden sie untereinander stehen*/
         width: 38%;         /*Reguliert die Breite des Feldes prozentual zum vorhandenen Platz*/
