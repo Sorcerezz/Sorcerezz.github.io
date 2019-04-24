@@ -25,12 +25,17 @@ h2
     text-transform: uppercase;
     font-size: 20px
 }
+
+section h2
+{
+    margin-left: 5%;
+}
  
 h3
 {
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
-    font-style: 14px;
+    font-style: 10px;
 }
 
 nav li
@@ -49,10 +54,11 @@ nav li
 
 img
 {
-    width: 100%;
+    width: 90%;
     height: auto;
-    border: #aaaaaa;
     border-radius: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 main
@@ -64,8 +70,9 @@ main
 section
 {
     background-color: #004000;
-    width: 33.3%;
+    width: 32.5%;
     float: left;
+    margin: 0.2% 0.2% 0.2% 0.2%;
 }
 
 section:nth-of-type(odd)
@@ -76,8 +83,8 @@ section:nth-of-type(odd)
 article
 {
     background-color: #aaaaaa;
-    width: 33.3%;
-    float: left;
+    margin: 0% 5% 0% 5%;
+    padding: 0 0.2% 0 2%;
 }
 
 aside
@@ -92,6 +99,7 @@ aside:hover
     position: absolute;
     width: 40%;
     background-color: #cccccc;
+    border-radius: 10%;
 }
 
 footer
