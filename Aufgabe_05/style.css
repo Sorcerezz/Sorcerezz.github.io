@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+body
+{
+    background-color: #876554;
+}
+
+p
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+}
+
+h1
+{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+h2
+{
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px
+}
+ 
+h3
+{
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-style: 15px;
+}
+
+#wrapper
+{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#mainnav li
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    width: 25%;
+    float: left;
+    text-align: center;
+    padding: 15px 0;
+
+}
+
+img
+{
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+section
+{
+    background-color: #435463;
+    width: 46%;
+    float: left;
+}
+
+article
+{
+    background-color: #aaaaaa;
+    width: 33.3%;
+    float: left;
+}
+
+aside
+{
+    width: 46%;
+    float: left;
+}
+
+footer
+{
+    float: left;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.l
+{
+    margin-left: 2%;
+    margin-right: 1%;
+}
+
+.r
+{
+    margin-left: 1%;
+    margin-right: 2%;
+}
