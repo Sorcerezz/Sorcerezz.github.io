@@ -2,7 +2,7 @@
 
 body
 {
-    background-color: #876554;
+    background-color: #cccccc;
 }
 
 p
@@ -30,38 +30,47 @@ h3
 {
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
-    font-style: 15px;
+    font-style: 14px;
 }
 
-#wrapper
-{
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-#mainnav li
+nav li
 {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
+    text-align: center;
+    list-style-type: none;
     width: 25%;
     float: left;
-    text-align: center;
     padding: 15px 0;
-
+    margin-bottom: 15px;
 }
+
+
 
 img
 {
-    width: 96%;
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 100%;
+    height: auto;
+    border: #aaaaaa;
+    border-radius: 10px;
+}
+
+main
+{
+    width: 75%;
+    margin-left: 25%;
 }
 
 section
 {
-    background-color: #435463;
-    width: 46%;
+    background-color: #004000;
+    width: 33.3%;
     float: left;
+}
+
+section:nth-of-type(odd)
+{
+    background-color: #508010;
 }
 
 article
@@ -73,25 +82,22 @@ article
 
 aside
 {
-    width: 46%;
-    float: left;
+    width: 23%;
+    position: absolute;
+    margin-top: 4em;
+}
+
+aside:hover
+{
+    position: absolute;
+    width: 40%;
+    background-color: #cccccc;
 }
 
 footer
 {
     float: left;
     width: 100%;
-    background-color: #ffffff;
-}
-
-.l
-{
-    margin-left: 2%;
-    margin-right: 1%;
-}
-
-.r
-{
-    margin-left: 1%;
-    margin-right: 2%;
+    color: #ffffff;
+    background-color: #505050;
 }
