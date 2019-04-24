@@ -38,6 +38,11 @@ h3
     font-style: 10px;
 }
 
+nav ul
+{    
+    padding: 0 20px; 
+}
+
 nav li
 {
     font-family: 'Roboto', sans-serif;
