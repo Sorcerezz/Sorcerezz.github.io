@@ -64,17 +64,6 @@ nav li div
     margin-bottom: 5px;
 }
 
-ul {
-    position: fixed;
-    margin-top: -40px;
-    margin-left: -15px;
-    list-style: none;
-    background-color: #505050;
-    display: none;
-}
-
-
-
 nav a
 {
     height: 15px;
@@ -84,16 +73,11 @@ nav a
 {
     position: absolute;
     margin-top: -50px;
-    margin-left: 20px;
-}
-
-#Burger:hover+ul {
-    display          : block;
 }
 
 #Burger:hover
 {
-    transform: rotate(360deg);
+    transform: rotate(180deg);
     transition-duration: 0.8s;
 }
 
@@ -141,36 +125,36 @@ section:nth-of-type(odd)
         margin-top: 2%;
     }
     
-/*Tablet*/
+    /*Tablet*/
     
-@media screen and (min-width: 415px) {
+    @media screen and (min-width: 415px) {
     
-main
-{
+    main
+    {
         width: 100%;
-}
+    }
     
-section
-{
+    section
+    {
         background-color: #004000;
         width: 48,4%;
         float: left;
         margin: 0.2% 0.2% 0.2% 0.2%;
-}
+    }
     
-article
-{
+    article
+    {
         background-color: #aaaaaa;
         margin: 0% 5% 0% 5%;
         padding: 0 0.2% 0 2%;
         overscroll-behavior: scroll;
-}
+    }
     
-aside
-{
+    aside
+    {
         width: 100%;
         margin-top: 2%;
-}
+    }
 
 }
     
