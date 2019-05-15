@@ -56,7 +56,13 @@ nav li
     float: left;
 }
 
-nav li div
+li
+{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+nav div div
 {
     width: 25px;
     height: 5px;
@@ -64,31 +70,13 @@ nav li div
     margin-bottom: 5px;
 }
 
-ul {
-    position: fixed;
-    margin-top: -40px;
-    margin-left: -15px;
-    list-style: none;
-    background-color: #505050;
-    display: none;
-}
-
-
-
-nav a
-{
-    height: 15px;
-}
-
 #Burger
 {
-    position: absolute;
+    position: fixed;
     margin-top: -50px;
     margin-left: 20px;
-}
-
-#Burger:hover+ul {
-    display          : block;
+    background-color: #cccccc;
+    padding: 5px 5px 0 5px;
 }
 
 #Burger:hover
@@ -96,6 +84,28 @@ nav a
     transform: rotate(360deg);
     transition-duration: 0.8s;
 }
+
+#Burger:hover+ul 
+{
+    display: block;
+
+}
+
+ul:hover
+{
+    display: block;
+}
+
+ul 
+{
+    position: fixed;
+    margin-top: -40px;
+    margin-left: -15px;
+    background-color: #cccccc;
+    color: #ffffff;
+    display: none;
+}
+
 
 img
 {
@@ -114,33 +124,33 @@ section:nth-of-type(odd)
 /*Handy*/
 
 
-    main
-    {
-        width: 100%;
-    }
-    
-    section
-    {
-        background-color: #004000;
-        width: 100%;
-        float: left;
-        margin: 0.2% 0.2% 0.2% 0.2%;
-    }
-    
-    article
-    {
-        background-color: #aaaaaa;
-        margin: 0% 5% 0% 5%;
-        padding: 0 0.2% 0 2%;
-        overscroll-behavior: scroll;
-    }
-    
-    aside
-    {
-        width: 100%;
-        margin-top: 2%;
-    }
-    
+main
+{
+    width: 100%;
+}
+
+section
+{
+    background-color: #004000;
+    width: 100%;
+    float: left;
+    margin: 0.2% 0.2% 0.2% 0.2%;
+}
+
+article
+{
+    background-color: #aaaaaa;
+    margin: 0% 5% 0% 5%;
+    padding: 0 0.2% 0 2%;
+    overscroll-behavior: scroll;
+}
+
+aside
+{
+    width: 100%;
+    margin-top: 2%;
+}
+
 /*Tablet*/
     
 @media screen and (min-width: 415px) {
@@ -153,7 +163,7 @@ main
 section
 {
         background-color: #004000;
-        width: 48,4%;
+        width: 48%;
         float: left;
         margin: 0.2% 0.2% 0.2% 0.2%;
 }
