@@ -217,14 +217,14 @@ aside
     position: absolute;
     margin-top: 4em;
 }
-
+/*
 aside:hover
 {
     position: absolute;
     width: 40%;
     background-color: #cccccc;
     border-radius: 10%;
-}
+}*/
 
 }
 
