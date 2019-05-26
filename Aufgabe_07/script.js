@@ -9,7 +9,7 @@ window.onload = function () {
     console.log("Die Website hat fertig geladen!");
     console.log("---------------------------------------------");
     Rechnung();
-    Knopf7();
+    Knopf6();
     document.getElementById("b1").addEventListener("click", B1); //Klick
     document.getElementById("b2").addEventListener("click", B2);
     document.getElementById("b3").addEventListener("click", B3p1);
@@ -17,7 +17,6 @@ window.onload = function () {
     document.getElementById("b4").addEventListener("mouseover", B4); //Drüberfahren
     document.getElementById("b5").addEventListener("click", B5);
     document.getElementById("b6").addEventListener("click", B6);
-    document.getElementById("b7").addEventListener("click", B7);
 };
 function Rechnung() {
     console.log("- 1Rechungen zwischen Variablen:");
@@ -37,12 +36,12 @@ function Rechnung() {
     console.log(Boolean(N1 < N2));
     console.log("---------------------------------------------");
 }
-function Knopf7() {
+function Knopf6() {
     let newButton = document.createElement("button");
     let position = document.getElementById("body");
     position.appendChild(newButton);
     newButton.innerHTML = "Klick mich!";
-    newButton.id = "b7";
+    newButton.id = "b6";
 }
 function B1() {
     console.log("Knopf 1 und seine Klasse haben sich verändert");
@@ -66,20 +65,16 @@ function B4() {
     document.getElementById("b4").innerHTML = "Musstest doch nicht klicken!";
 }
 function B5() {
-    console.log("Knopf 5 / Nummer N1 hat sich verändert");
-    document.getElementById("b5").innerHTML = "Ich hab N1 verändert!";
-}
-function B6() {
-    console.log("Knopf 6 hat sich verändert / ein neuer Paragraph wurde erstellt");
-    document.getElementById("b6").innerHTML = "Neuer Text erscheint!";
+    console.log("Knopf 5 hat sich verändert / ein neuer Paragraph wurde erstellt");
+    document.getElementById("b5").innerHTML = "Neuer Text erscheint!";
     let P = document.createElement("p");
     let position = document.getElementById("body");
     position.appendChild(P);
     P.innerHTML = "Ich wurde durch ein Script erstellt";
 }
-function B7() {
-    console.log("Knopf 7 hat sich verändert / einen neuen Knopf X erstellt");
-    document.getElementById("b7").innerHTML = "Ein neuer Knopf erscheint!";
+function B6() {
+    console.log("Knopf 6 hat sich verändert / einen neuen Knopf X erstellt");
+    document.getElementById("b6").innerHTML = "Ein neuer Knopf erscheint!";
     let newButton = document.createElement("button");
     let position = document.getElementById("body");
     position.appendChild(newButton);
