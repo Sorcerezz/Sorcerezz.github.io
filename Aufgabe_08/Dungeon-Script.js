@@ -3,13 +3,11 @@ let monsterHolder = "monsterHoldingCell"; // ID für das Haupt-Element, in welch
 let playerName = "Spielername"; // Ein paar globale Variablen, welche den Spieler darstellen.
 let playerXP = 0; // Stellt die gesammelte Erfahrung des Spielers dar. - wenn der Spieler startet hat er keine Erfahrung
 let playerXPperLevel = 500; // Da es nur einen Spieler gibt, ergibt sich noch nicht viel Sinn darin, für den Spieler ein interface (im Sinne der Programmierung) zu erstellen.
-let playerItems = "Pfeil und Bogen";
 // Mehrere Arrays, welche jeweils Bauteile für Namen oder Eigenschaften der Monster beinhalten.
 let prefix = ["Höllengesandte ", "Verbannte ", "Unheillvolle ", "Verfluchte ", "Albtraumhafte ", "Wütende ", "Verdorbene ", "Zerschlagene "]; // length = 8, da 8 Einträge. Von 0-7.
 let monsterName = ["Valeana", "Rhaenys", "Visenya", "Alyssa", "Area", "Jocelyn", "Rhaella", "Helaena"]; // length = 8, da 8 Einträge. Von 0-7.
 let suffix = [" Tochter der Leere", " die Gefallene", " Wächterin des Fegefeuers", " die Schlächterin", " die Rächerin", " die Hexe", " die Wut des Sturms", " die Schiesswütige"]; // length = 8, da hier 8 Einträge sind. Von 0-7.
 let monsterModifers = ["Giftig", "Feuerfest", "Giftresistend", "Haut aus Stahl", "Aufgebracht", "Wachsam", "Schnell", "Wasserscheu", "Glühend", "Flink", "Aussersich"]; // Eine Reihe von zufälligen Verstärkern/Zusätzen für das Monster. length = 8, da 8 Einträge. Von 0-7.
-let monsterWeapon = ["Gedankenkontrolle", "Blutbändigen", "Blick des Todes", "Versteinern", "Mummiefizierung", "Tanz des Todes", "Gesang der Verstummung", "Erstickender Kuss"]; // length = 8, da 8 Einträge. Von 0-7.
 let Images = ["Bilder/Monster (1).png", "Bilder/Monster (2).png", "Bilder/Monster (3).png", "Bilder/Monster (4).png", "Bilder/Monster (5).png", "Bilder/Monster (6).png", "Bilder/Monster (7).png", "Bilder/Monster (8).png"]; // length = 8, da 8 Einträge. Von 0-7.
 // -- Initialisierung für viele/variable Anzahl an Monster --
 let monsterArray = []; // Das Haupt-Array wurde erstellt und initialisiert!
