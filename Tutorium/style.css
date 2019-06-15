@@ -46,6 +46,17 @@ a
         text-decoration: none;      /*Entfernt die automaischen Unterstriche vom Link*/
     }
 
+button
+    {
+        font-family: 'Roboto';
+        background-color: lightblue;
+    }
+
+#Buttons button:hover
+    {
+        background-color: #ffffff;
+    }
+
 /*Navigation*/
 
     #mainnav a
