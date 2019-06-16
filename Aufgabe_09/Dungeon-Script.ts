@@ -103,20 +103,12 @@ function updateHTML()
 
 function clearMonsterCell() 
 {
-    /*let monsterHoldingDiv: HTMLElement = document.getElementById(monsterHolder);
+    let monsterHoldingDiv: HTMLElement = document.getElementById("monsterHoldingCell");
     while (monsterHoldingDiv.firstChild)
     {
         monsterHoldingDiv.removeChild(monsterHoldingDiv.firstChild);                        //document.GetElementById("monsterHoldingCell").innerHTML = ''; Wäre ineffizient weil die html elemente zwar leer aber noch vorhanden wären
     }
-    console.log("Diva besiegt/gelöscht");*/
-    let monsterAnzeige: HTMLElement = document.getElementById("monsterHoldingCell");
-    let children: HTMLCollection = monsterAnzeige.children;
-    let childCount: number = children.length;
-
-    for (let i:number=0; i<childCount; i++) {                                   // Schleife die alle children in der monsterAnzeige abtastet
-        if (monsterAnzeige.firstElementChild != null)                           // Nur ausführen falls schon die monster ANzeige schon children hat
-            monsterAnzeige.removeChild(monsterAnzeige.firstElementChild);       // Lösche bei jedem durchgang das "firstChild"
-}
+    console.log("Diva besiegt/gelöscht");
 }
 
 function monsterGenerateHTMLAll() 
