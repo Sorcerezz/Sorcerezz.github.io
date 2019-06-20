@@ -8,6 +8,7 @@ interface Monster {
     monsterHealthPoints : number; // Lebenspunkte
     monsterExperience : number; // Erfahrungspunkte bei besiegen des Monsters
     monsterModifier : string []; // Monster-Verstärker. Diese sind in diesem Fall nur Text! (Da hier einfacher Zufall für die Auswahl genutzt wird, kann der gleiche Eintrag auch doppelt vorkommen)
+    monsterLevel : number;
 }
 
 
@@ -18,6 +19,7 @@ let playerName : string = "Spielername";                                        
 let playerXP : number = 0;                                                          // Stellt die gesammelte Erfahrung des Spielers dar. - wenn der Spieler startet hat er keine Erfahrung
 let playerXPperLevel : number = 500;                                                // Da es nur einen Spieler gibt, ergibt sich noch nicht viel Sinn darin, für den Spieler ein interface (im Sinne der Programmierung) zu erstellen.
 let playerItems : string = "Pfeil und Bogen"
+let playerLevel : number = 0;
 
 // ------- Arrays -------- //
 let prefix : string[] = ["Höllengesandte ", "Verbannte ", "Unheillvolle ", "Verfluchte ", "Albtraumhafte ", "Wütende ", "Verdorbene ", "Zerschlagene "]; // length = 8, da 8 Einträge. Von 0-7.
@@ -68,7 +70,8 @@ function generateMonster()
         let newMonsterName : string = generateMonsterName();                
         let newMonsterHP : number = generateMonsterHealthPoints();             
         let newMonsterXP : number = generateMonsterXP();                   
-        let newMonsterModifier : string[] = generateMonsterModifer();       
+        let newMonsterModifier : string[] = generateMonsterModifer();  
+        let newmonsterLevel : number = getRNGNumber(10);
 
         let newMonster : Monster = {                                        // Monster wird erstellt.
             monsterAge : newMonsterAge,
@@ -80,6 +83,7 @@ function generateMonster()
             monsterHealthPoints : newMonsterHP,
             monsterExperience : newMonsterXP,
             monsterModifier : newMonsterModifier,
+            monsterLevel : newmonsterLevel,
         };
 
         monsterArray.push(newMonster);                                      // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
@@ -277,3 +281,11 @@ function updatePlayerLevel()
     console.log("Spieler " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)");        // Spieler-Level in der Konsole.
 }
 
+// neue Funktion fightAllMonsters
+// mit einem klick auf den Button fightAllMonsters soll gegen alle Monster gekämpft werden.
+function fightAllMonsters(){
+
+
+
+
+}
