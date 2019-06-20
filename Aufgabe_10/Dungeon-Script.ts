@@ -39,7 +39,10 @@ let monsterArray : Monster[] = []; // Das Haupt-Array wurde erstellt und initial
 // ----------- Funktionen ----------- //
 window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonster, false);
-    updatePlayerLevel(); // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
+    document.getElementById("fightAll").addEventListener("click", fightAllMonsters, false);
+    document.getElementById("fightWeakest").addEventListener("click", fightWeakest, false);
+    document.getElementById("fightAllWeak").addEventListener("click", fightAllWeak, false);
+    updatePlayerLevel(0); // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
     console.log("" + document.getElementById("monsterSpawner").innerHTML); 
 }
 
@@ -267,25 +270,83 @@ function fightMonster(_index : number)
     
     playerXP += monsterArray[_index].monsterExperience;                 	    // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
     monsterArray.splice(_index,1);
-    updatePlayerLevel();
+    updatePlayerLevel(-1);//TODO magic number
     updateHTML();
 }
 
 
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
-function updatePlayerLevel()
+function updatePlayerLevel(operator : number)
 {
-    let tempLevel : number = Math.floor(playerXP / playerXPperLevel);                                                                           // Spieler-Level = XP / XPproLevel
-
+    let tempLevel : number = Math.floor(playerXP / playerXPperLevel);     // Spieler-Level = XP / XPproLevel
+    
+    if(operator > 0)
+    {//Erfahrungspunkte zuwachs
+        playerXP = playerXP + operator;
+    }
+    else
+    {
+        if(operator + playerXP < 500)
+        {// unter Level 1 fallen
+            //XP bleiben unverändert
+            // playerXP = 500;
+        }
+        else
+        {// Erfahrung über level 1 wird verloren
+         playerXP = playerXP + operator;
+        }
+    }
+    playerLevel = Math.floor(playerXP / playerXPperLevel);
     document.getElementById("xpCounter").innerHTML = "Player-Level: " + tempLevel + " (XP: " + playerXP%playerXPperLevel +" / "+playerXPperLevel +  ")";       // Baue den String für die Spieler-Info zusammen
     console.log("Spieler " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)");        // Spieler-Level in der Konsole.
+
+    if(playerLevel == 20)
+    {
+        window.alert("Du hast die Diven besiegt und Gewonnen!")
+    }
 }
 
+
+
 // neue Funktion fightAllMonsters
-// mit einem klick auf den Button fightAllMonsters soll gegen alle Monster gekämpft werden.
+// mit einem klick auf den Button fightAllMonsters soll gegen alle Monster gekämpft werden
+// es wird nacheinander mit jedem Monster gekämpft
 function fightAllMonsters(){
+    console.log("fightAllMonsters wurde aufgerufen");
+    for(let i = 0; i < monsterArray.length; i++){
+        if(playerLevel >= monsterArray[i].monsterLevel){// Spieler gewinnt
+            fightMonster(i);
+        }else // Monster gewinnt den Kampf
+        {
+            updatePlayerLevel(-monsterArray[i].monsterExperience);
+            updateHTML();
+        }
+    }
 
+}
 
+function fightWeakest(){
+    // suche nach dem schwächsten monster
+    let tmpindex = 0;
+    for(let i = 1; i < monsterArray.length; i++){
+        if(monsterArray[i].monsterLevel < monsterArray[tmpindex].monsterLevel){
+            tmpindex = i;
+        }
+    }
+    // tmpindex enthält die position des Arrays an dem das schwächste monster sitzt
 
+    updatePlayerLevel(monsterArray[tmpindex].monsterExperience);
+    monsterArray.splice(tmpindex,1);
+    updateHTML();
+}
 
+function fightAllWeak(){
+//TODO überprüfen wie splice die Monster entfernt
+    for(let i = 0; i < monsterArray.length; i++){
+        if(monsterArray[i].monsterLevel < playerLevel){
+            updatePlayerLevel(monsterArray[i].monsterExperience);
+            monsterArray.splice(i,1);
+            updateHTML();
+        }
+    }
 }
