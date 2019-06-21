@@ -4,6 +4,8 @@ let playerName = "Spielername"; // Ein paar globale Variablen, welche den Spiele
 let playerXP = 0; // Stellt die gesammelte Erfahrung des Spielers dar. - wenn der Spieler startet hat er keine Erfahrung
 let playerXPperLevel = 500; // Da es nur einen Spieler gibt, ergibt sich noch nicht viel Sinn darin, für den Spieler ein interface (im Sinne der Programmierung) zu erstellen.
 let playerItems = "Pfeil und Bogen";
+let playerLevel = 0;
+let monsterLevel = getRNGNumber(10);
 // ------- Arrays -------- //
 let prefix = ["Höllengesandte ", "Verbannte ", "Unheillvolle ", "Verfluchte ", "Albtraumhafte ", "Wütende ", "Verdorbene ", "Zerschlagene "]; // length = 8, da 8 Einträge. Von 0-7.
 let monsterName = ["Valeana", "Rhaenys", "Visenya", "Alyssa", "Area", "Jocelyn", "Rhaella", "Helaena"]; // length = 8, da 8 Einträge. Von 0-7.
@@ -15,9 +17,13 @@ let monsterImage = ["Bilder/Monster (1).png", "Bilder/Monster (2).png", "Bilder/
 let monsterArray = []; // Das Haupt-Array wurde erstellt und initialisiert!
 //console.log(monsterArray ); // Gebe das Monster-Array einmal zu beginn aus. Es sollte leer sein.
 // ----------- Funktionen ----------- //
+console.log("Willkommen!");
 window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonster, false);
-    updatePlayerLevel(); // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
+    document.getElementById("fightAll").addEventListener("click", fightAllMonsters);
+    document.getElementById("fightWeakest").addEventListener("click", fightWeakest);
+    document.getElementById("fightAllWeak").addEventListener("click", fightAllWeak);
+    updatePlayerLevel(0); // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
     console.log("" + document.getElementById("monsterSpawner").innerHTML);
 };
 console.log(document.getElementById("monsterSpawner").innerHTML);
@@ -43,6 +49,7 @@ function generateMonster() {
         let newMonsterHP = generateMonsterHealthPoints();
         let newMonsterXP = generateMonsterXP();
         let newMonsterModifier = generateMonsterModifer();
+        let newmonsterLevel = getRNGNumber(10);
         let newMonster = {
             monsterAge: newMonsterAge,
             monsterDifficulty: newMonsterDifficulty,
@@ -52,6 +59,7 @@ function generateMonster() {
             monsterHealthPoints: newMonsterHP,
             monsterExperience: newMonsterXP,
             monsterModifier: newMonsterModifier,
+            monsterLevel: newmonsterLevel,
         };
         monsterArray.push(newMonster); // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
     }
@@ -180,17 +188,71 @@ function generateMonsterModifer() {
 // Aufgerufen, wenn man auf den Button klickt.
 // Der Spieler kämpft gegen das entsprechende Monster. Er erhält dann Erfahrungspunkte.
 function fightMonster(_index) {
-    console.log("Spieler kämpft gegen Monster und gewinnt!"); // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
-    console.log("Das Monster weigert sich zu verschwinden."); // Wird nächste Stunde erweitert.
-    playerXP += monsterArray[_index].monsterExperience; // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
+    console.log("Du versuchst die Diva zu bekämpfen, schaffst du es?");
+    playerXP += monsterArray[_index].monsterExperience;
     monsterArray.splice(_index, 1);
-    updatePlayerLevel();
+    updatePlayerLevel(-1);
     updateHTML();
 }
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
-function updatePlayerLevel() {
+function updatePlayerLevel(operator) {
     let tempLevel = Math.floor(playerXP / playerXPperLevel); // Spieler-Level = XP / XPproLevel
+    if (operator > 0) { //Erfahrungspunkte zuwachs
+        playerXP = playerXP + operator;
+    }
+    else {
+        if (operator + playerXP < 500) { // unter Level 1 fallen
+            //XP bleiben unverändert
+            // playerXP = 500;
+        }
+        else { // Erfahrung über level 1 wird verloren
+            playerXP = playerXP + operator;
+        }
+    }
+    playerLevel = Math.floor(playerXP / playerXPperLevel);
     document.getElementById("xpCounter").innerHTML = "Player-Level: " + tempLevel + " (XP: " + playerXP % playerXPperLevel + " / " + playerXPperLevel + ")"; // Baue den String für die Spieler-Info zusammen
     console.log("Spieler " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)"); // Spieler-Level in der Konsole.
+    if (playerLevel == 20) {
+        window.alert("Du hast die Diven besiegt und Gewonnen!");
+    }
+}
+// neue Funktion fightAllMonsters
+// mit einem klick auf den Button fightAllMonsters soll gegen alle Monster gekämpft werden
+// es wird nacheinander mit jedem Monster gekämpft
+function fightAllMonsters() {
+    console.log("Du versuchst gegen ALLE Diven anzutreten!");
+    for (let i = 0; i < monsterArray.length; i++) {
+        if (playerLevel >= monsterArray[i].monsterLevel) { // Spieler gewinnt
+            fightMonster(i);
+        }
+        else // Monster gewinnt den Kampf
+         {
+            updatePlayerLevel(-monsterArray[i].monsterExperience);
+            updateHTML();
+        }
+    }
+}
+function fightWeakest() {
+    console.log("Du suchst dir die schwächste Diva um sie zu bekämpfen.");
+    let tmpindex = 0;
+    for (let i = 1; i < monsterArray.length; i++) {
+        if (monsterArray[i].monsterLevel < monsterArray[tmpindex].monsterLevel) {
+            tmpindex = i;
+        }
+    }
+    // tmpindex enthält die position des Arrays an dem das schwächste monster sitzt
+    updatePlayerLevel(monsterArray[tmpindex].monsterExperience);
+    monsterArray.splice(tmpindex, 1);
+    updateHTML();
+}
+function fightAllWeak() {
+    console.log("Du suchst Diven die schwächer sind als du, um sie zu beämpfen.");
+    for (let i = 0; i < monsterArray.length; i++) {
+        if (monsterArray[i].monsterLevel < playerLevel) {
+            updatePlayerLevel(monsterArray[i].monsterExperience);
+            monsterArray.splice(i, 1);
+            updateHTML();
+        }
+    }
 }
 //# sourceMappingURL=Dungeon-Script.js.map
