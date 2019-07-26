@@ -24,8 +24,22 @@ function Generierung() {
     let neuerKartenWert;
     let neueKartenFarbe;
     let neueKartenBesonderheit = "none";
-    // Schleifen die Karten mit den Werten 1-9, in vier verschiedenen Farben erzeugen.
-    for (let w = 1; w <= 9; w++) {
+    for (let k = 0; k < 2; k++) {
+        switch (k) {
+            case 0:
+            case 1:
+                neueKartenBesonderheit = "Plus 2";
+                break;
+        }
+        let neueKarte = {
+            KartenBesonderheit: neueKartenBesonderheit,
+            KartenWert: 10,
+            KartenFarbe: "Besonders"
+        };
+        ZugDeck.push(neueKarte);
+    }
+    for (let w = 1; w <= 9; w++) //Werte 1-9 je 4 Farben
+     {
         for (let f = 0; f < 4; f++) {
             neuerKartenWert = w;
             switch (f) {
@@ -50,20 +64,6 @@ function Generierung() {
             ZugDeck.push(neueKarte);
         }
     }
-    for (let k = 0; k < 2; k++) {
-        switch (k) {
-            case 0:
-            case 1:
-                neueKartenBesonderheit = "Plus 2";
-                break;
-        }
-        let neueKarte = {
-            KartenBesonderheit: neueKartenBesonderheit,
-            KartenWert: 10,
-            KartenFarbe: "Besonders"
-        };
-        ZugDeck.push(neueKarte);
-    }
     console.log("- Die Karten wurden generiert.");
 }
 function ZugDeckMischen() {
@@ -86,23 +86,6 @@ function Austeilen() {
     console.log("- Die Karten wurden ausgeteilt.");
 }
 /* ~~ Vordergrundfunktionen ~~ */
-function GeneriereSpielerHand(KartenNummer) {
-    let KartenDiv = document.createElement("div");
-    KartenDiv.setAttribute("id", "SpielerKarte" + (KartenNummer + 1));
-    KartenDiv.setAttribute("class", "Karte");
-    KartenDiv.addEventListener('click', function () { KarteSpielen(KartenNummer, SpielerAmZug); }, false);
-    document.getElementById("SpielerHand").appendChild(KartenDiv);
-    let TempKartenWert = SpielerHand[KartenNummer].KartenWert + ""; //was steht auf der Karte
-    switch (SpielerHand[KartenNummer].KartenBesonderheit) {
-        case "Plus 2":
-            TempKartenWert = "+2";
-            break;
-    }
-    let AnzuzeigenderWert = document.createElement("p");
-    AnzuzeigenderWert.innerHTML = TempKartenWert + "";
-    AnzuzeigenderWert.setAttribute("class", SpielerHand[KartenNummer].KartenFarbe);
-    KartenDiv.appendChild(AnzuzeigenderWert);
-}
 function GeneriereGegnerHand(KartenNummer) {
     if (!GegnerHandSichtbar) //VersteckteKarten
      {
@@ -129,6 +112,13 @@ function GeneriereGegnerHand(KartenNummer) {
         KartenDiv.appendChild(AnzuzeigenderWert);
     }
 }
+function GeneriereZugDeck() {
+    let KartenDiv = document.createElement("div");
+    KartenDiv.setAttribute("id", "ObersteKarte");
+    KartenDiv.setAttribute("class", "VersteckteKarte");
+    KartenDiv.addEventListener('click', function () { KarteZiehen(SpielerAmZug); }, false);
+    document.getElementById("ZugDeck").appendChild(KartenDiv);
+}
 function GeneriereAblageDeck(KartenNummer) {
     let KartenDiv = document.createElement("div");
     KartenDiv.setAttribute("id", "AbgelegteKarte" + (KartenNummer + 1));
@@ -145,26 +135,32 @@ function GeneriereAblageDeck(KartenNummer) {
     AnzuzeigenderWert.setAttribute("class", AblageDeck[KartenNummer].KartenFarbe);
     KartenDiv.appendChild(AnzuzeigenderWert);
 }
-function GeneriereZugDeck() {
+function GeneriereSpielerHand(KartenNummer) {
     let KartenDiv = document.createElement("div");
-    KartenDiv.setAttribute("id", "ObersteKarte");
-    KartenDiv.setAttribute("class", "VersteckteKarte");
-    KartenDiv.addEventListener('click', function () { KarteZiehen(SpielerAmZug); }, false);
-    document.getElementById("ZugDeck").appendChild(KartenDiv);
+    KartenDiv.setAttribute("id", "SpielerKarte" + (KartenNummer + 1));
+    KartenDiv.setAttribute("class", "Karte");
+    KartenDiv.addEventListener('click', function () { KarteSpielen(KartenNummer, SpielerAmZug); }, false);
+    document.getElementById("SpielerHand").appendChild(KartenDiv);
+    let TempKartenWert = SpielerHand[KartenNummer].KartenWert + ""; //was steht auf der Karte
+    switch (SpielerHand[KartenNummer].KartenBesonderheit) {
+        case "Plus 2":
+            TempKartenWert = "+2";
+            break;
+    }
+    let AnzuzeigenderWert = document.createElement("p");
+    AnzuzeigenderWert.innerHTML = TempKartenWert + "";
+    AnzuzeigenderWert.setAttribute("class", SpielerHand[KartenNummer].KartenFarbe);
+    KartenDiv.appendChild(AnzuzeigenderWert);
+}
+function DreheGegnerHand() {
+    GegnerHandSichtbar = !GegnerHandSichtbar;
+    ErneuereHTML();
 }
 /* ~~ Hintergrundfunktionen ~~ */
-function GeneriereHTML() {
-    for (let i = 0; i < GegnerHand.length; i++) {
-        GeneriereGegnerHand(i);
-    }
-    for (let j = 0; j < SpielerHand.length; j++) {
-        GeneriereSpielerHand(j);
-    }
-    for (let k = 0; k < AblageDeck.length; k++) {
-        GeneriereAblageDeck(k);
-    }
-    GeneriereZugDeck();
-    console.log("- HTML wurde erstellt.");
+function ErneuereHTML() {
+    LoescheHTML();
+    GeneriereHTML();
+    console.log("HTML wurde erneuert.");
 }
 function LoescheHTML() {
     let LeerZuMachen = document.getElementById("SpielerHand");
@@ -197,11 +193,20 @@ function LoescheHTML() {
     }
     console.log("- HTML wurde gelöscht.");
 }
-function ErneuereHTML() {
-    LoescheHTML();
-    GeneriereHTML();
-    console.log("HTML wurde erneuert.");
+function GeneriereHTML() {
+    for (let i = 0; i < GegnerHand.length; i++) {
+        GeneriereGegnerHand(i);
+    }
+    for (let j = 0; j < SpielerHand.length; j++) {
+        GeneriereSpielerHand(j);
+    }
+    for (let k = 0; k < AblageDeck.length; k++) {
+        GeneriereAblageDeck(k);
+    }
+    GeneriereZugDeck();
+    console.log("- HTML wurde erstellt.");
 }
+/* ~~ Spielfunktionen ~~ */
 function KarteSpielen(GespielteKartenNummer, TempAmZug) {
     if (TempAmZug == true) //Spieler will legen
      {
@@ -276,47 +281,7 @@ function GegnerAmZug() {
     }
     SpielerAmZug = true; //Zugwechsel
 }
-/////////////////////////////////////////////// ZUSATZ-FUNKTIONEN ///////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//---------------------------------------- Das Spiel wird beendet und ein neues Spiel wird begonnen ----------------------------------------//
-// Parameter= Wurde das Spiel gewonnen oder Verloren
-function Spielende(Gewonnen) {
-    if (Gewonnen) {
-        alert("Du hast gewonnen! Nochmal spielen?");
-        console.log("Du hast gewonnen!");
-    }
-    else {
-        alert("Du hast verloren. Nochmal spielen?");
-        console.log("Du hast verloren.");
-    }
-    while (GegnerHand.length > 0) //Arrays leeren
-     {
-        GegnerHand.pop();
-    }
-    while (SpielerHand.length > 0) {
-        SpielerHand.pop();
-    }
-    while (ZugDeck.length > 0) {
-        ZugDeck.pop();
-    }
-    while (AblageDeck.length > 0) {
-        AblageDeck.pop();
-    }
-    Generierung();
-    ZugDeckMischen();
-    Austeilen();
-    ErneuereHTML();
-    SpielerAmZug = true;
-}
-function NeuMischen() {
-    let topCard = AblageDeck[AblageDeck.length - 1]; //Oberste/letzte Karte merken
-    while (AblageDeck.length > 0) {
-        ZugDeck.push(AblageDeck[AblageDeck.length - 1]);
-        AblageDeck.pop();
-    }
-    AblageDeck.push(topCard);
-    ZugDeckMischen();
-}
+/* ~~ Optional ~~ */
 function NutzeKartenBesonderheit(TempKarte, TempAmZug) {
     if (TempAmZug) // Wenn der Player am Zug ist.
      {
@@ -347,8 +312,41 @@ function NutzeKartenBesonderheit(TempKarte, TempAmZug) {
     }
     ErneuereHTML();
 }
-function DreheGegnerHand() {
-    GegnerHandSichtbar = !GegnerHandSichtbar;
+function NeuMischen() {
+    let topCard = AblageDeck[AblageDeck.length - 1]; //Oberste/letzte Karte merken
+    while (AblageDeck.length > 0) {
+        ZugDeck.push(AblageDeck[AblageDeck.length - 1]);
+        AblageDeck.pop();
+    }
+    AblageDeck.push(topCard);
+    ZugDeckMischen();
+}
+function Spielende(Gewonnen) {
+    if (Gewonnen) {
+        alert("Du hast gewonnen! Nochmal spielen?");
+        console.log("Du hast gewonnen!");
+    }
+    else {
+        alert("Du hast verloren. Nochmal spielen?");
+        console.log("Du hast verloren.");
+    }
+    while (GegnerHand.length > 0) //Arrays leeren
+     {
+        GegnerHand.pop();
+    }
+    while (SpielerHand.length > 0) {
+        SpielerHand.pop();
+    }
+    while (ZugDeck.length > 0) {
+        ZugDeck.pop();
+    }
+    while (AblageDeck.length > 0) {
+        AblageDeck.pop();
+    }
+    Generierung();
+    ZugDeckMischen();
+    Austeilen();
     ErneuereHTML();
+    SpielerAmZug = true;
 }
 //# sourceMappingURL=script.js.map

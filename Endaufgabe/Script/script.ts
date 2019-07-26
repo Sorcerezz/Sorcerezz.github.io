@@ -38,8 +38,22 @@ function Generierung()
     let neuerKartenWert : number;            
     let neueKartenFarbe : string;
     let neueKartenBesonderheit : string = "none";  
-    // Schleifen die Karten mit den Werten 1-9, in vier verschiedenen Farben erzeugen.
-    for(let w : number = 1; w <= 9; w++)
+
+    for(let k : number = 0; k < 2; k++)
+    {
+        switch(k)
+        {
+            case 0: case 1: neueKartenBesonderheit = "Plus 2"; break;
+        }
+        let neueKarte: Karte = 
+        {                                         
+            KartenBesonderheit: neueKartenBesonderheit,
+            KartenWert: 10,
+            KartenFarbe: "Besonders"
+        };
+        ZugDeck.push(neueKarte);
+    }
+    for(let w : number = 1; w <= 9; w++)                //Werte 1-9 je 4 Farben
     {
         for(let f : number = 0 ; f < 4; f++)
         {
@@ -60,23 +74,8 @@ function Generierung()
             ZugDeck.push(neueKarte);
         }                                  
     }
-    for(let k : number = 0; k < 2; k++)
-    {
-        switch(k)
-        {
-            case 0: case 1: neueKartenBesonderheit = "Plus 2"; break;
-        }
-        let neueKarte: Karte = 
-        {                                         
-            KartenBesonderheit: neueKartenBesonderheit,
-            KartenWert: 10,
-            KartenFarbe: "Besonders"
-        };
-        ZugDeck.push(neueKarte);
-    }
     console.log("- Die Karten wurden generiert.")             
 }
-
 
 function ZugDeckMischen()
 {
@@ -91,7 +90,6 @@ function ZugDeckMischen()
 
 function Austeilen()
 {
-
     for(let i : number = 0; i < 8; i++)             //Teilt 8 Karten aus
     {
         GegnerHand.push(ZugDeck[0]);
@@ -100,7 +98,6 @@ function Austeilen()
         SpielerHand.push(ZugDeck[0]);
         ZugDeck.splice(0, 1);
     }
-    
     AblageDeck.push(ZugDeck[0]);
     ZugDeck.splice(0, 1);
 
@@ -108,26 +105,6 @@ function Austeilen()
 }
 
     /* ~~ Vordergrundfunktionen ~~ */
-function GeneriereSpielerHand(KartenNummer : number)
-{
-    let KartenDiv: HTMLElement = document.createElement("div");             
-    KartenDiv.setAttribute("id", "SpielerKarte" + (KartenNummer + 1));                  
-    KartenDiv.setAttribute("class", "Karte");    
-    KartenDiv.addEventListener('click', function () { KarteSpielen(KartenNummer, SpielerAmZug); }, false); 
-    document.getElementById("SpielerHand").appendChild(KartenDiv);                        
-   
-    let TempKartenWert : string = SpielerHand[KartenNummer].KartenWert + "";        //was steht auf der Karte
-    switch(SpielerHand[KartenNummer].KartenBesonderheit)
-    {
-        case "Plus 2" : TempKartenWert = "+2"; break;
-    }
-
-    let AnzuzeigenderWert: HTMLElement = document.createElement("p");               
-    AnzuzeigenderWert.innerHTML = TempKartenWert +""; 
-    AnzuzeigenderWert.setAttribute("class", SpielerHand[KartenNummer].KartenFarbe);
-    KartenDiv.appendChild(AnzuzeigenderWert);
-}
-
 function GeneriereGegnerHand(KartenNummer : number)
 {
     if(!GegnerHandSichtbar)             //VersteckteKarten
@@ -157,6 +134,15 @@ function GeneriereGegnerHand(KartenNummer : number)
     }
 }
 
+function GeneriereZugDeck()
+{       
+    let KartenDiv: HTMLElement = document.createElement("div");              
+    KartenDiv.setAttribute("id", "ObersteKarte");                  
+    KartenDiv.setAttribute("class", "VersteckteKarte");     
+    KartenDiv.addEventListener('click', function () { KarteZiehen(SpielerAmZug); }, false); 
+    document.getElementById("ZugDeck").appendChild(KartenDiv);
+}
+
 function GeneriereAblageDeck(KartenNummer : number)
 {  
     let KartenDiv: HTMLElement = document.createElement("div");              
@@ -176,32 +162,38 @@ function GeneriereAblageDeck(KartenNummer : number)
     KartenDiv.appendChild(AnzuzeigenderWert);
 }
 
-function GeneriereZugDeck()
-{       
-    let KartenDiv: HTMLElement = document.createElement("div");              
-    KartenDiv.setAttribute("id", "ObersteKarte");                  
-    KartenDiv.setAttribute("class", "VersteckteKarte");     
-    KartenDiv.addEventListener('click', function () { KarteZiehen(SpielerAmZug); }, false); 
-    document.getElementById("ZugDeck").appendChild(KartenDiv);
+function GeneriereSpielerHand(KartenNummer : number)
+{
+    let KartenDiv: HTMLElement = document.createElement("div");             
+    KartenDiv.setAttribute("id", "SpielerKarte" + (KartenNummer + 1));                  
+    KartenDiv.setAttribute("class", "Karte");    
+    KartenDiv.addEventListener('click', function () { KarteSpielen(KartenNummer, SpielerAmZug); }, false); 
+    document.getElementById("SpielerHand").appendChild(KartenDiv);                        
+   
+    let TempKartenWert : string = SpielerHand[KartenNummer].KartenWert + "";        //was steht auf der Karte
+    switch(SpielerHand[KartenNummer].KartenBesonderheit)
+    {
+        case "Plus 2" : TempKartenWert = "+2"; break;
+    }
+
+    let AnzuzeigenderWert: HTMLElement = document.createElement("p");               
+    AnzuzeigenderWert.innerHTML = TempKartenWert +""; 
+    AnzuzeigenderWert.setAttribute("class", SpielerHand[KartenNummer].KartenFarbe);
+    KartenDiv.appendChild(AnzuzeigenderWert);
+}
+
+function DreheGegnerHand()              //Verstecke die Karten
+{
+    GegnerHandSichtbar = !GegnerHandSichtbar;
+    ErneuereHTML();
 }
 
     /* ~~ Hintergrundfunktionen ~~ */
-function GeneriereHTML() 
+function ErneuereHTML()
 {
-    for (let i: number = 0; i < GegnerHand.length; i++) 
-    {
-        GeneriereGegnerHand(i);
-    }
-    for (let j: number = 0; j < SpielerHand.length; j++) 
-    {
-        GeneriereSpielerHand(j);
-    }
-    for (let k: number = 0; k < AblageDeck.length; k++) 
-    {
-        GeneriereAblageDeck(k);
-    }
-    GeneriereZugDeck();
-    console.log("- HTML wurde erstellt.")
+    LoescheHTML();
+    GeneriereHTML();
+    console.log("HTML wurde erneuert.")
 }
 
 function LoescheHTML() 
@@ -245,13 +237,25 @@ function LoescheHTML()
     console.log("- HTML wurde gelöscht.")
 }
 
-function ErneuereHTML()
+function GeneriereHTML() 
 {
-    LoescheHTML();
-    GeneriereHTML();
-    console.log("HTML wurde erneuert.")
+    for (let i: number = 0; i < GegnerHand.length; i++) 
+    {
+        GeneriereGegnerHand(i);
+    }
+    for (let j: number = 0; j < SpielerHand.length; j++) 
+    {
+        GeneriereSpielerHand(j);
+    }
+    for (let k: number = 0; k < AblageDeck.length; k++) 
+    {
+        GeneriereAblageDeck(k);
+    }
+    GeneriereZugDeck();
+    console.log("- HTML wurde erstellt.")
 }
 
+    /* ~~ Spielfunktionen ~~ */
 function KarteSpielen (GespielteKartenNummer : number, TempAmZug : boolean)     //Welche Karte gespielt werden soll und kann 
 {                                              
     if (TempAmZug == true)      //Spieler will legen
@@ -338,18 +342,55 @@ function GegnerAmZug()
     SpielerAmZug = true;        //Zugwechsel
 }
 
+/* ~~ Optional ~~ */
+function NutzeKartenBesonderheit(TempKarte : Karte, TempAmZug : boolean)
+{
+    if(TempAmZug)           // Wenn der Player am Zug ist.
+    {        
+        switch(TempKarte.KartenBesonderheit)        //+2 Karten auf die Hand
+        {        
+            case "Plus 2":
+                for(let i : number = 0; i < 2; i++)
+                {
+                if(ZugDeck.length < 1)NeuMischen();
+                GegnerHand.push(ZugDeck[0]);
+                ZugDeck.splice(0, 1);
+                }
+            break;
+        }
 
+    } 
+    else                        // Wenn der Computer am Zug ist.
+    {                 
+        switch(TempKarte.KartenBesonderheit)
+        {
+            case "Plus 2":
+                for(let i : number = 0; i < 2; i++)
+                {
+                    if(ZugDeck.length < 1)NeuMischen();
+                    SpielerHand.push(ZugDeck[0]);
+                    ZugDeck.splice(0, 1);
+                }
+            break;
+        }
+    }
+    ErneuereHTML();
+}
 
+function NeuMischen()           //ZugDeck leer -> AblageDeck neu Mischen
+{
+    let topCard : Karte = AblageDeck[AblageDeck.length - 1];        //Oberste/letzte Karte merken
 
+    while(AblageDeck.length > 0)
+    {
+        ZugDeck.push(AblageDeck[AblageDeck.length - 1])
+        AblageDeck.pop();
+    }
+    AblageDeck.push(topCard);
 
+    ZugDeckMischen();
+}
 
-
-/////////////////////////////////////////////// ZUSATZ-FUNKTIONEN ///////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//---------------------------------------- Das Spiel wird beendet und ein neues Spiel wird begonnen ----------------------------------------//
-// Parameter= Wurde das Spiel gewonnen oder Verloren
 function Spielende( Gewonnen : boolean)
 {
     if(Gewonnen)
@@ -386,58 +427,4 @@ function Spielende( Gewonnen : boolean)
     ErneuereHTML();
     
     SpielerAmZug = true;
-}
-
-function NeuMischen()           //ZugDeck leer -> AblageDeck neu Mischen
-{
-    let topCard : Karte = AblageDeck[AblageDeck.length - 1];        //Oberste/letzte Karte merken
-
-    while(AblageDeck.length > 0)
-    {
-        ZugDeck.push(AblageDeck[AblageDeck.length - 1])
-        AblageDeck.pop();
-    }
-    AblageDeck.push(topCard);
-
-    ZugDeckMischen();
-}
-
-function NutzeKartenBesonderheit(TempKarte : Karte, TempAmZug : boolean)
-{
-    if(TempAmZug)           // Wenn der Player am Zug ist.
-    {        
-        switch(TempKarte.KartenBesonderheit)        //+2 Karten auf die Hand
-        {        
-            case "Plus 2":
-                for(let i : number = 0; i < 2; i++)
-                {
-                if(ZugDeck.length < 1)NeuMischen();
-                GegnerHand.push(ZugDeck[0]);
-                ZugDeck.splice(0, 1);
-                }
-            break;
-        }
-
-    } 
-    else                        // Wenn der Computer am Zug ist.
-    {                 
-        switch(TempKarte.KartenBesonderheit)
-        {
-            case "Plus 2":
-                for(let i : number = 0; i < 2; i++)
-                {
-                    if(ZugDeck.length < 1)NeuMischen();
-                    SpielerHand.push(ZugDeck[0]);
-                    ZugDeck.splice(0, 1);
-                }
-            break;
-        }
-    }
-    ErneuereHTML();
-}
-
-function DreheGegnerHand()              //Verstecke die Karten
-{
-    GegnerHandSichtbar = !GegnerHandSichtbar;
-    ErneuereHTML();
 }
