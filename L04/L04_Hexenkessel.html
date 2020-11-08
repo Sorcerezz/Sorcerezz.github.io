@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hexenkessel</title>
+    <meta charset="utf-8">
+    <script src="L04_Hexenkessel.js" type="text/javascript"></script>
+    <link href="L04_Hexenkessel.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Hexenkessel</h1>
+    </header>
+
+    <main>
+        <div id="1">
+            <form id="Basis">
+                <p>Name: </p>
+                <input type="text" minlength="4" placeholder="Bsp: Wachmacher">
+                <hr>
+                <p>Wirkung: </p>
+                <select name="Wirkung" id="wirkung">
+                    <option value="" disabled selected>wähle eine Wirkung...</option>
+                    <option value="liebestrank">Liebestrank</option>
+                    <option value="alterungsstopper">Alterungsstopper</option>
+                    <option value="glücklichmacher">Glücklichmacher</option>
+                    <option value="wachmacher">Wachmacher</option>
+                    <option value="flüssiges glück">Flüssig Glück</option>
+                    <option value="unsichtbarkeitstrank">Unsichtbarkeitstrank</option>
+                    <option value="manatrank">Manatrank</option>
+                    <option value="heiltrank">Heiltrank</option>
+                    <option value="übelkeit">Übelkeit</option>
+                    <option value="reger verstand">Reger Verstand</option>
+                    <option value="emotionale stabilität">Emotionale Stabilität</option>
+                    <option value="programmiersprache verstehen">Programmiersprache Verstehen</option>
+                </select>
+                <hr>
+                <p>Beschreibung</p>
+                <textarea name="beschreibung" id="Beschreibung" cols="25" rows="5"></textarea>
+                <hr>
+                <p>Wirkungsdauer</p>
+                <select name="wirkungsdauer" id="wDauer">
+                    <option value="" disabled selected>..</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                    <option value="16">16</option>
+                    <option value="24">24</option>
+                    <option value="32">32</option>
+                    <option value="48">48</option>
+                    <option value="72">72</option>
+                </select>
+                <p>Stunden</p>
+            </form>
+        </div>
+
+        <div id="2">
+            <form id="Zutaten">
+                <p>Zutaten: </p>
+                <select name="fest" id="fest">
+                    <option value="" disabled selected>wähle eine feste Zutat...</option>
+                    <option value="graue haare">Graue Haare</option>
+                    <option value="schlangenschuppen">Schlangenschuppen</option>
+                    <option value="drachenschuppen">Drachenschuppen</option>
+                    <option value="fingernägel">Fingernägel</option>
+                    <option value="rattenschwanz">Rattenschwanz</option>
+                    <option value="weissheitszähne">Weissheitszähne</option>
+                    <option value="getrockneter frosch">Getrockneter Frosch</option>
+                    <option value="einhornhorn">Einhornhorn</option>
+                    <option value="phönixasche">Phönixasche</option>
+                    <option value="eulenfeder">Eulenfeder</option>
+                    <option value="drachenwimpern">Drachenwimpern</option>
+                    <option value="wolfskralle">Wolfskralle</option>
+                </select>
+                <input type="number">
+                <p>g</p>
+                <button>+</button>
+                <hr>
+                <select name="flüssig" id="flüssig">
+                    <option value="" disabled selected>wähle eine flüssige Zutat...</option>
+                    <option value="schlangengift">Schlangengift</option>
+                    <option value="drachenurin">Drachenurin</option>
+                    <option value="jungfrauenblut">Jungfrauenblut</option>
+                    <option value="malfeus tränen">Malfeus Tränen</option>
+                    <option value="basilisken sabber">Basilisken Sabber</option>
+                    <option value="einhornblut">Einhornblut</option>
+                    <option value="wasser">Wasser</option>
+                    <option value="vodka">Vodka</option>
+                    <option value="professoren schweiss">Professoren Schweiss</option>
+                    <option value="rückenmark">Rückenmark</option>
+                    <option value="tintenfisch tinte">Tintenfisch Tinte</option>
+                    <option value="studenten tränen">Studenten Tränen</option>
+                </select>
+                <input type="number">
+                <p>ml</p>
+                <button>+</button>
+            </form>
+
+            <form id="Angaben">
+                <p>Erhitzen / Abkühlen: </p>
+                <input type="number" id="Temperatur" placeholder="gibt eine Temperatur an...">
+                <p>°C</p>
+                <hr>
+                <p>Rührintensität: </p>
+                <select name="intensität" id="Intensität">
+                    <option value="" disabled selected>..</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <hr>
+                <p>Dauer: </p>
+                <input type="time" id="zDauer">
+                <p>Stunden</p>
+                <hr>
+                <p>Konsistenz: </p>
+                <select name="Konsistenz" id="Konsistenz">
+                    <option value="" disabled selected>wähle eine Konsistenz...</option>
+                    <option value="schleimig">schleimig</option>
+                    <option value="zäh">zäh</option>
+                    <option value="dünnflüssig">dünnflüssig</option>
+                    <option value="klebrig">klebrig</option>
+                    <option value="dickflüssig">dickflüssig</option>
+                    <option value="glitchig">glitchig</option>
+                    <option value="qualig">qualig</option>
+                    <option value="ölig">ölig</option>
+                </select>
+                <hr>
+                <p>Farbe: </p>
+                <select name="Farbe" id="farbe">
+                    <option value="" disabled selected>wähle eine Farbe...</option>
+                    <option value="#D20005">blutrot</option>
+                    <option value="#6486D">kotzgrün</option>
+                    <option value="#1633BC">königsblut</option>
+                    <option value="#ECFF00">gallengelb</option>
+                    <option value="#000000">totschwarz</option>
+                    <option value="#FF80C0">liebesrosa</option>
+                    <option value="#79BBF0">babyblau</option>
+                    <option value="#00D7D1">meerjungfrauntürkis</option>
+                    <option value="#F87C21">tigerorange</option>
+                </select>
+                <button id="Hinzufügen">als nächsten Rezeptschritt einfügen</button>
+            </form>
+        </div>
+        <div id="3">
+            <article id="Trank">
+                <h2>Trank</h2>
+            </article>
+
+            <div id="Zutatenliste">
+                <hr>
+                <h3>Zutatenliste</h3>
+            </div>
+
+            <div id="PreisG">
+                <hr>
+                <p>Preis</p>
+                <p>Galleonen</p>
+            </div>
+    </main>
+    </div>
+
+    <aside id="Rezept">
+        <h3>Rezept</h3>
+    </aside>
+
+    <div id="uff">
+        <hr>
+        <button id="Änderungen"> <a href="L04_Snape.html">Snape hier klicken</a> </button>
+    </div>
+</body>
+</hmtl>

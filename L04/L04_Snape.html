@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hexenkessel</title>
+    <meta charset="utf-8">
+    <script src="L04_Snape.js" type="text/javascript"></script>
+    <link href="L04_Hexenkessel.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Hexenkessel</h1>
+    </header>
+
+    <main>
+        <div id="Ändern">
+            <h2>Preis verändern</h2>
+            <p>Zutat: </p>
+            <select name="aZutat">
+                <option value="" disabled selected>wähle eine Zutat...</option>
+                <option value="graue haare">Graue Haare</option>
+                <option value="schlangenschuppen">Schlangenschuppen</option>
+                <option value="drachenschuppen">Drachenschuppen</option>
+                <option value="fingernägel">Fingernägel</option>
+                <option value="rattenschwanz">Rattenschwanz</option>
+                <option value="weissheitszähne">Weissheitszähne</option>
+                <option value="getrockneter frosch">Getrockneter Frosch</option>
+                <option value="einhornhorn">Einhornhorn</option>
+                <option value="phönixasche">Phönixasche</option>
+                <option value="eulenfeder">Eulenfeder</option>
+                <option value="drachenwimpern">Drachenwimpern</option>
+                <option value="wolfskralle">Wolfskralle</option>
+                <option value="schlangengift">Schlangengift</option>
+                <option value="drachenurin">Drachenurin</option>
+                <option value="jungfrauenblut">Jungfrauenblut</option>
+                <option value="malfeus tränen">Malfeus Tränen</option>
+                <option value="basilisken sabber">Basilisken Sabber</option>
+                <option value="einhornblut">Einhornblut</option>
+                <option value="wasser">Wasser</option>
+                <option value="vodka">Vodka</option>
+                <option value="professoren schweiss">Professoren Schweiss</option>
+                <option value="rückenmark">Rückenmark</option>
+                <option value="tintenfisch tinte">Tintenfisch Tinte</option>
+                <option value="studenten tränen">Studenten Tränen</option>
+            </select>
+            <hr>
+            <p>neuer Preis: </p>
+            <input type="number" id="PreisNeu">
+            <hr>
+            <button id="Änderung">ändern</button>
+        </div>
+
+        <div id="Neu">
+            <h2>Zutat hinzufügen</h2>
+            <p>Name: </p>
+            <input type="text" id="NameNeu">
+            <hr>
+            <p>Prei: </p>
+            <input type="number" id="Preis">
+            <hr>
+            <button id="Addierung">hinzufügen</button>
+        </div>
+
+        <div id="Löschen">
+            <h2>Zutat löschen</h2>
+            <p>Name: </p>
+            <select name="lZutat">
+                <option value="" disabled selected>wähle eine Zutat...</option>
+                <option value="graue haare">Graue Haare</option>
+                <option value="schlangenschuppen">Schlangenschuppen</option>
+                <option value="drachenschuppen">Drachenschuppen</option>
+                <option value="fingernägel">Fingernägel</option>
+                <option value="rattenschwanz">Rattenschwanz</option>
+                <option value="weissheitszähne">Weissheitszähne</option>
+                <option value="getrockneter frosch">Getrockneter Frosch</option>
+                <option value="einhornhorn">Einhornhorn</option>
+                <option value="phönixasche">Phönixasche</option>
+                <option value="eulenfeder">Eulenfeder</option>
+                <option value="drachenwimpern">Drachenwimpern</option>
+                <option value="wolfskralle">Wolfskralle</option>
+                <option value="schlangengift">Schlangengift</option>
+                <option value="drachenurin">Drachenurin</option>
+                <option value="jungfrauenblut">Jungfrauenblut</option>
+                <option value="malfeus tränen">Malfeus Tränen</option>
+                <option value="basilisken sabber">Basilisken Sabber</option>
+                <option value="einhornblut">Einhornblut</option>
+                <option value="wasser">Wasser</option>
+                <option value="vodka">Vodka</option>
+                <option value="professoren schweiss">Professoren Schweiss</option>
+                <option value="rückenmark">Rückenmark</option>
+                <option value="tintenfisch tinte">Tintenfisch Tinte</option>
+                <option value="studenten tränen">Studenten Tränen</option>
+            </select>
+            <hr>
+            <button id="Löschung">löschen</button>
+        </div>
+    </main>
+
+    <aside id="Alle Zutaten">
+        <h2>Zutaten</h2>
+    </aside>
+
+    <div id="uff">
+        <hr>
+        <button><a href="L04_Hexenkessel.html">zurück zum Hexenkessel</a></button>
+    </div>
+</body>
+</hmtl>
